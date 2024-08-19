@@ -18,6 +18,11 @@ public class StationSoundExtender : AssemblyPluginBase
         this.BveHacker.ScenarioCreated += (ScenarioCreatedEventArgs e) => { 
             scenario = e.Scenario;
             InitSound();
+            if (!scenario.Vehicle.Conductor.Doors.AreAllClosed)
+            {
+                // 始発駅かつ停車駅の場合に呼び出す
+                OnDoorOpened(new DoorEventArgs());
+            }
         };
         Native.DoorOpened += OnDoorOpened;
         Native.DoorClosed += OnDoorClosed;
@@ -27,14 +32,21 @@ public class StationSoundExtender : AssemblyPluginBase
     public override TickResult Tick(TimeSpan elapsed)
     {
         if (nowSetting is null)
-        {
             return new MapPluginTickResult();
-        }
-        var nowTime = BveHacker.Scenario.TimeManager.Time;
+        if (scenario is null)
+            return new MapPluginTickResult();
+
+        var nowTime = scenario.TimeManager.Time;
         if (nowSetting.ArrivalSoundStopTime <= nowTime)
         {
             // 放送を止める処理
-            GetSoundById(nowSetting.ArrivalSoundId).Stop(0);
+            GetSoundById(nowSetting.ArrivalSoundId)?.Stop(0);
+        }
+        if (!nowSetting.IsDepartureSoundPlayed && nowSetting.DepartureSoundTime <= nowTime)
+        {
+            // 出発放送を流す処理
+            GetSoundById(nowSetting.DepartureSoundId)?.Play(1, 1, 0);
+            nowSetting.IsDepartureSoundPlayed = true;
         }
         return new MapPluginTickResult();
     }
@@ -54,11 +66,12 @@ public class StationSoundExtender : AssemblyPluginBase
         if (GetStationSettingsByName(next.Name) is null)
             return;
         nowSetting = GetStationSettingsByName(next.Name);
-        var nowTime = BveHacker.Scenario.TimeManager.Time;
+        nowSetting.IsDepartureSoundPlayed = false;
+        var nowTime = scenario.TimeManager.Time;
         if (nowSetting.ArrivalSoundLimitTime >= nowTime)
         {
             // 放送を流す処理
-            GetSoundById(nowSetting.ArrivalSoundId).Play(1, 1, 0);
+            GetSoundById(nowSetting.ArrivalSoundId)?.Play(1, 1, 0);
         }
     }
     private void OnDoorClosed(DoorEventArgs e)
@@ -80,10 +93,14 @@ public class StationSoundExtender : AssemblyPluginBase
     /// </summary>
     private Sound GetSoundById(string id)
     {
-        return this.BveHacker.Scenario.Route.Sounds[id];
+        if (id is null) return null;
+        if (scenario is null) return null;
+        scenario.Route.Sounds.TryGetValue(id, out var result);
+        return result;
     }
     private Station[] GetStationArray()
     {
+        if (scenario is null) return Array.Empty<Station>();
         var list = new List<Station>(scenario.Route.Stations.Count);
         for (var i = 0; i < scenario?.Route.Stations.Count; i++)
         {
@@ -92,13 +109,19 @@ public class StationSoundExtender : AssemblyPluginBase
         return list.ToArray();
     }
     private Station GetStationByName(string name)
-        => GetStationArray().FirstOrDefault(v => {
+    {
+        if (name is null) return null;
+        return GetStationArray().FirstOrDefault(v => {
             return (v as Station).Name == name;
         }) as Station;
+    }
     private StationSettings GetStationSettingsByName(string name)
-        => Settings.FirstOrDefault(v => {
+    {
+        if (name is null) return null;
+        return Settings.FirstOrDefault(v => {
             return v.TargetStationName == name;
         });
+    }
 
     private void InitSound()
     {
@@ -109,6 +132,7 @@ public class StationSoundExtender : AssemblyPluginBase
             if (!(GetStationSettingsByName(sta.Name) is null))
             {
                 sta.ArrivalSound?.SetVolumeAndPitch(0, 0);
+                sta.DepartureSound?.SetVolumeAndPitch(0, 0);
             }
         }
     }

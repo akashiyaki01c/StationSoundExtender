@@ -5,6 +5,7 @@ BVE上の駅放送を拡張するプラグインです。
 
 * 到着時に流れるサウンドを、延着時に流さないようにする。
 * 指定の時間を過ぎると到着放送を中断する。
+* 発車放送のタイミングを設定できる。
 
 ## 使い方
 `StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `StationSoundExtender.json` を配置します。
@@ -16,7 +17,9 @@ BVE上の駅放送を拡張するプラグインです。
 		"TargetStationName": "A駅",             // 設定対象の駅名を記述します。(stationKeyではなく、stationNameで記述します。)
 		"ArrivalSoundId": "StaK09_Arr",         // 到着時に再生するサウンド名を記述します。
 		"ArrivalSoundLimitTime": "18:01:30",    // 到着放送を再生するリミットの時刻を記述します。
-		"ArrivalSoundStopTime": "18:01:32"      // 到着放送の再生を中断する時刻を記述します。
+		"ArrivalSoundStopTime": "18:01:32",     // 到着放送の再生を中断する時刻を記述します。
+		"DepartureSoundId": "StaK09_Dep",		// 発車時に再生するサウンド名を記述します。
+		"DepartureSoundTime": "18:01:25"		// 発車放送を再生する時刻を記述します。
 	},
 	{
 		"TargetStationName": "B駅",             // 上記と同様の記述をします。

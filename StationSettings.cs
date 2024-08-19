@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 public class StationSettings
 {
@@ -23,4 +24,21 @@ public class StationSettings
     /// 到着放送を停止する時刻
     /// </summary>
     public TimeSpan ArrivalSoundStopTime { get; set; }
+
+    private string _departureSoundId;
+    /// <summary>
+    /// 出発時に放送するサウンド
+    /// </summary>
+    public string DepartureSoundId
+    {
+        get => _departureSoundId;
+        set => _departureSoundId = value.ToLower();
+    }
+    /// <summary>
+    /// 出発放送を再生する時刻
+    /// </summary>
+    public TimeSpan DepartureSoundTime { get; set; }
+
+    [JsonIgnore]
+    internal bool IsDepartureSoundPlayed { get; set; }
 }

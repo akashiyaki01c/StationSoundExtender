@@ -23,6 +23,7 @@ public static class SettingsLoader
         }
         catch
         {
+            throw;
             return Array.Empty<StationSettings>();
         }
     }
