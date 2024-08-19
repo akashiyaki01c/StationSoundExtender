@@ -30,6 +30,6 @@ public static class SettingsLoader
     {
         var asmPath = Assembly.GetExecutingAssembly().Location;
         var asmDir = Path.GetDirectoryName(asmPath);
-        return asmDir + "/announcement.json";
+        return asmDir + "/StationSoundExtender.json";
     }
 }

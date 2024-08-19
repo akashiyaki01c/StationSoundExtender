@@ -7,7 +7,7 @@ BVE上の駅放送を拡張するプラグインです。
 * 指定の時間を過ぎると到着放送を中断する。
 
 ## 使い方
-`StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `announcement.json` を配置します。
+`StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `StationSoundExtender.json` を配置します。
 
 ### 設定項目
 ```json
