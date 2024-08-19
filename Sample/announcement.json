@@ -1,0 +1,14 @@
+[
+	{
+		"TargetStationName": "駒ヶ林",
+		"ArrivalSoundId": "StaK09_Arr",
+		"ArrivalSoundLimitTime": "18:01:30",
+		"ArrivalSoundStopTime": "18:01:32"
+	},
+	{
+		"TargetStationName": "苅藻",
+		"ArrivalSoundId": "StaK08_Arr",
+		"ArrivalSoundLimitTime": "18:03:15",
+		"ArrivalSoundStopTime": "18:03:17"
+	}
+]
