@@ -30,3 +30,6 @@ BVE上の駅放送を拡張するプラグインです。
 ## 使用ライブラリ
 ### [AtsEx.*](https://github.com/automatic9045/AtsEX) (MIT)
 Copyright (c) 2022 automatic9045
+
+### [System.Text.Json](https://www.nuget.org/packages/System.Text.Json) (MIT)
+Copyright (c) .NET Foundation and Contributors
