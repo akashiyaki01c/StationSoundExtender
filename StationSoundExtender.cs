@@ -14,7 +14,7 @@ public class StationSoundExtender : AssemblyPluginBase
     private StationSettings[] Settings = null;
     private StationSettings nowSetting = null;
 
-    public StationAnnouncement(PluginBuilder builder) : base(builder) {
+    public StationSoundExtender(PluginBuilder builder) : base(builder) {
         this.BveHacker.ScenarioCreated += (ScenarioCreatedEventArgs e) => { 
             scenario = e.Scenario;
             InitSound();
@@ -47,7 +47,6 @@ public class StationSoundExtender : AssemblyPluginBase
     /// <summary>
     /// 開扉時に呼び出される関数
     /// </summary>
-    /// <param name="e">E.</param>
     private void OnDoorOpened(DoorEventArgs e)
     {
         if (scenario is null) return;
