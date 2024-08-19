@@ -17,6 +17,7 @@ public static class SettingsLoader
             var options = new JsonSerializerOptions()
             {
                 AllowTrailingCommas = true,
+                ReadCommentHandling = JsonCommentHandling.Skip,
             };
             return JsonSerializer.Deserialize<StationSettings[]>(str);
         }
