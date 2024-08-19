@@ -24,13 +24,3 @@ public class StationSettings
     /// </summary>
     public TimeSpan ArrivalSoundStopTime { get; set; }
 }
-
-internal static class TestSettings
-{
-    public static List<StationSettings> Settings => new List<StationSettings>() {
-        new StationSettings() { 
-            TargetStationName = "駒ヶ林", 
-            ArrivalSoundId = "StaK09_Arr".ToLower(), 
-            ArrivalSoundLimitTime = new TimeSpan(18, 1, 30) }
-    };
-}
