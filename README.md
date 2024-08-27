@@ -15,15 +15,15 @@ BVE上の駅放送を拡張するプラグインです。
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<StationSettings>
-		<TargetStationName>学園都市</TargetStationName>				// 設定対象の駅名を記述します。(stationKeyではなく、stationNameで記述します。)
-		<ArrivalSoundId>StaArrS14</ArrivalSoundId>					// 到着時に再生するサウンド名を記述します。
-		<ArrivalSoundLimitTime>12:14:46</ArrivalSoundLimitTime>		// 到着放送を再生するリミットの時刻を記述します。
-		<ArrivalSoundStopTime>12:14:55</ArrivalSoundStopTime>		// 到着放送の再生を中断する時刻を記述します。
-		<DepartureSoundId>StaDep1</DepartureSoundId>				// 発車時に再生するサウンド名を記述します。
-		<DepartureSoundTime>12:14:55</DepartureSoundTime>			// 発車放送を再生する時刻を記述します。
+		<TargetStationName>A駅</TargetStationName>                  // 設定対象の駅名を記述します。(stationKeyではなく、stationNameで記述します。)
+		<ArrivalSoundId>StaArrS14</ArrivalSoundId>                  // 到着時に再生するサウンド名を記述します。
+		<ArrivalSoundLimitTime>12:14:46</ArrivalSoundLimitTime>     // 到着放送を再生するリミットの時刻を記述します。
+		<ArrivalSoundStopTime>12:14:55</ArrivalSoundStopTime>       // 到着放送の再生を中断する時刻を記述します。
+		<DepartureSoundId>StaDep1</DepartureSoundId>                // 発車時に再生するサウンド名を記述します。
+		<DepartureSoundTime>12:14:55</DepartureSoundTime>           // 発車放送を再生する時刻を記述します。
 	</StationSettings>
-	<StationSettings>												// 設定したい駅分だけ記述します。
-		<TargetStationName>名谷</TargetStationName>
+	<StationSettings>                                               // 設定したい駅分だけ記述します。
+		<TargetStationName>B駅</TargetStationName>
 		<ArrivalSoundId>StaArrS12</ArrivalSoundId>
 		<ArrivalSoundLimitTime>12:19:17</ArrivalSoundLimitTime>
 		<ArrivalSoundStopTime>12:19:25</ArrivalSoundStopTime>
