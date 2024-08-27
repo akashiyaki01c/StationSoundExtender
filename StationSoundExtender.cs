@@ -76,6 +76,10 @@ public class StationSoundExtender : AssemblyPluginBase
     }
     private void OnDoorClosed(DoorEventArgs e)
     {
+        if (nowSetting != null)
+        {
+            nowSetting.IsDepartureSoundPlayed = false;
+        }
         nowSetting = null;
     }
 

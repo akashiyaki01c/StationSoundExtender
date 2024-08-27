@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<StationSettings>
+		<TargetStationName>学園都市</TargetStationName>
+		<ArrivalSoundId>StaArrS14</ArrivalSoundId>
+		<ArrivalSoundLimitTime>12:14:46</ArrivalSoundLimitTime>
+		<ArrivalSoundStopTime>12:14:55</ArrivalSoundStopTime>
+		<DepartureSoundId>StaDep1</DepartureSoundId>
+		<DepartureSoundTime>12:14:55</DepartureSoundTime>
+	</StationSettings>
+	<StationSettings>
+		<TargetStationName>名谷</TargetStationName>
+		<ArrivalSoundId>StaArrS12</ArrivalSoundId>
+		<ArrivalSoundLimitTime>12:19:17</ArrivalSoundLimitTime>
+		<ArrivalSoundStopTime>12:19:25</ArrivalSoundStopTime>
+		<DepartureSoundId>StaDep1</DepartureSoundId>
+		<DepartureSoundTime>12:19:25</DepartureSoundTime>
+	</StationSettings>
+</ArrayOfStationSettings>

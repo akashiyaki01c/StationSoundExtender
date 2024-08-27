@@ -11,23 +11,26 @@ BVE上の駅放送を拡張するプラグインです。
 `StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `StationSoundExtender.json` を配置します。
 
 ### 設定項目
-```json
-[
-	{
-		"TargetStationName": "A駅",             // 設定対象の駅名を記述します。(stationKeyではなく、stationNameで記述します。)
-		"ArrivalSoundId": "StaK09_Arr",         // 到着時に再生するサウンド名を記述します。
-		"ArrivalSoundLimitTime": "18:01:30",    // 到着放送を再生するリミットの時刻を記述します。
-		"ArrivalSoundStopTime": "18:01:32",     // 到着放送の再生を中断する時刻を記述します。
-		"DepartureSoundId": "StaK09_Dep",		// 発車時に再生するサウンド名を記述します。
-		"DepartureSoundTime": "18:01:25"		// 発車放送を再生する時刻を記述します。
-	},
-	{
-		"TargetStationName": "B駅",             // 上記と同様の記述をします。
-		"ArrivalSoundId": "StaK08_Arr",
-		"ArrivalSoundLimitTime": "18:03:15",
-		"ArrivalSoundStopTime": "18:03:17"
-	}
-]
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<StationSettings>
+		<TargetStationName>学園都市</TargetStationName>				// 設定対象の駅名を記述します。(stationKeyではなく、stationNameで記述します。)
+		<ArrivalSoundId>StaArrS14</ArrivalSoundId>					// 到着時に再生するサウンド名を記述します。
+		<ArrivalSoundLimitTime>12:14:46</ArrivalSoundLimitTime>		// 到着放送を再生するリミットの時刻を記述します。
+		<ArrivalSoundStopTime>12:14:55</ArrivalSoundStopTime>		// 到着放送の再生を中断する時刻を記述します。
+		<DepartureSoundId>StaDep1</DepartureSoundId>				// 発車時に再生するサウンド名を記述します。
+		<DepartureSoundTime>12:14:55</DepartureSoundTime>			// 発車放送を再生する時刻を記述します。
+	</StationSettings>
+	<StationSettings>												// 設定したい駅分だけ記述します。
+		<TargetStationName>名谷</TargetStationName>
+		<ArrivalSoundId>StaArrS12</ArrivalSoundId>
+		<ArrivalSoundLimitTime>12:19:17</ArrivalSoundLimitTime>
+		<ArrivalSoundStopTime>12:19:25</ArrivalSoundStopTime>
+		<DepartureSoundId>StaDep1</DepartureSoundId>
+		<DepartureSoundTime>12:19:25</DepartureSoundTime>
+	</StationSettings>
+</ArrayOfStationSettings>
 ```
 
 ## 使用ライブラリ

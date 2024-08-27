@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Text.Json;
+using System.Xml.Serialization;
 
 /// <summary>
 /// 設定ファイルの読み込みを行うクラス群
@@ -13,18 +13,13 @@ public static class SettingsLoader
         try
         {
             var path = GetPath();
-            var str = File.ReadAllBytes(path);
-            var options = new JsonSerializerOptions()
-            {
-                AllowTrailingCommas = true,
-                ReadCommentHandling = JsonCommentHandling.Skip,
-            };
-            return JsonSerializer.Deserialize<StationSettings[]>(str);
+            var reader = new StreamReader(path);
+            var serializer = new XmlSerializer(typeof(StationSettings[]));
+            return (StationSettings[])serializer.Deserialize(reader);
         }
         catch
         {
             throw;
-            return Array.Empty<StationSettings>();
         }
     }
 
@@ -32,6 +27,6 @@ public static class SettingsLoader
     {
         var asmPath = Assembly.GetExecutingAssembly().Location;
         var asmDir = Path.GetDirectoryName(asmPath);
-        return asmDir + "/StationSoundExtender.json";
+        return asmDir + "/StationSoundExtender.xml";
     }
 }
