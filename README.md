@@ -1,5 +1,5 @@
 # StationSoundExtender
-BVE上の駅放送を拡張するプラグインです。
+AtsEX上でBVE上の駅放送を拡張するプラグインです。
 
 ## 機能
 
@@ -8,7 +8,9 @@ BVE上の駅放送を拡張するプラグインです。
 * 発車放送のタイミングを設定できる。
 
 ## 使い方
-`StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `StationSoundExtender.json` を配置します。
+[リリースページ](https://github.com/akashiyaki01c/StationSoundExtender/releases) から `StationSoundExtender.dll` をダウンロードします。
+
+シナリオ内に配置した`StationSoundExtender.dll` と同じディレクトリ内に設定項目を記述した `StationSoundExtender.xml` を配置します。
 
 ### 設定項目
 ```xml
